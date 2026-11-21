@@ -1,0 +1,63 @@
+# Dockerfile and Image Build
+
+## Aim
+To create a Dockerfile for the university result portal, build a Docker image and run the application inside a container.
+
+## Software Required
+- Docker
+- Python 3.12
+- Flask
+- Gunicorn
+- Ubuntu Linux
+
+## Procedure
+
+### Step 1: Create the Application
+
+Create an app.py file containing the Flask web application.
+
+### Step 2: Create Requirements File
+
+Create requirements.txt and add the required Python packages.
+
+### Step 3: Create Dockerfile
+
+Use python:3.12-slim as the base image. Set the working directory to /app, install dependencies, copy the application source and run the application as a non-root user named portal.
+
+### Step 4: Build the Docker Image
+
+```bash
+docker build -t result-portal .
+```
+
+### Step 5: Run the Docker Container
+
+```bash
+docker run -d --name result-portal -p 8000:8000 result-portal
+```
+
+### Step 6: Check the Container
+
+```bash
+docker ps
+```
+
+### Step 7: Open the Application
+
+Open the browser and enter:
+
+http://localhost:8000
+
+### Step 8: Check the Container User
+
+```bash
+docker exec result-portal whoami
+```
+
+Expected output:
+
+portal
+
+## Result
+
+The Docker image is created successfully, and the university result portal runs inside a Docker container using a non-root user.
